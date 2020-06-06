@@ -2,8 +2,8 @@
 //  ViewExtension.swift
 //  AlertX
 //
-//  Created by Neel on 05/06/20.
-//  Copyright © 2020 Neel. All rights reserved.
+//  Copyright © 2020 Neel Makhecha. All rights reserved.
+//  https://github.com/neel-makhecha/AlertX
 //
 
 import SwiftUI
