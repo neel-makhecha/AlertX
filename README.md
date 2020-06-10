@@ -114,6 +114,7 @@ Here's a list of all pre-defined animations:
     classicEffect
     zoomEffect
     fadeEffect
+    slideUpEffect
 
 You can also create your own animations just like you would for any other SwiftUI View using the following method:
 
