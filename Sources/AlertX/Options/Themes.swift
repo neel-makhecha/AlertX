@@ -109,56 +109,56 @@ extension AlertX {
         }
         
         public static func sun(withTransparency transparency: Bool = true, roundedCorners: Bool = false) -> AlertX.Theme {
-            let theme = AlertX.Theme(windowColor: Color(red: 255/255, green: 217/255, blue: 50/255),
-                                     alertTextColor: Color.black,
+            let theme = AlertX.Theme(windowColor: Color(red: 253/255, green: 184/255, blue: 51/255),
+                                     alertTextColor: Color(red: 118/255, green: 82/255, blue: 14/255),
                                      enableShadow: true,
                                      enableRoundedCorners: roundedCorners,
                                      enableTransparency: transparency,
-                                     cancelButtonColor: Color(red: 255/255, green: 240/255, blue: 86/255),
-                                     cancelButtonTextColor: Color.black,
-                                     defaultButtonColor: Color(red: 254/255, green: 174/255, blue: 0/255),
-                                     defaultButtonTextColor: Color.black)
+                                     cancelButtonColor: Color(red: 255/255, green: 213/255, blue: 62/255),
+                                     cancelButtonTextColor: Color(red: 118/255, green: 82/255, blue: 14/255),
+                                     defaultButtonColor: Color(red: 255/255, green: 247/255, blue: 94/255),
+                                     defaultButtonTextColor: Color(red: 118/255, green: 82/255, blue: 14/255))
             
             return theme
         }
         
         public static func cherry(withTransparency transparency: Bool = true, roundedCorners: Bool = false) -> AlertX.Theme {
-            let theme = AlertX.Theme(windowColor: Color(red: 255/255, green: 100/255, blue: 78/255),
+            let theme = AlertX.Theme(windowColor: Color(red: 239/255, green: 35/255, blue: 60/255),
                                      alertTextColor: Color.white,
                                      enableShadow: true,
                                      enableRoundedCorners: roundedCorners,
                                      enableTransparency: transparency,
-                                     cancelButtonColor: Color(red: 255/255, green: 150/255, blue: 141/255),
+                                     cancelButtonColor: Color(red: 216/255, green: 0/255, blue: 50/255),
                                      cancelButtonTextColor: Color.white,
-                                     defaultButtonColor: Color(red: 238/255, green: 34/255, blue: 12/255),
+                                     defaultButtonColor: Color(red: 255/255, green: 150/255, blue: 141/255),
                                      defaultButtonTextColor: Color.white)
             
             return theme
         }
         
         public static func mint(withTransparency transparency: Bool = true, roundedCorners: Bool = false) -> AlertX.Theme {
-            let theme = AlertX.Theme(windowColor: Color(red: 22/255, green: 231/255, blue: 207/255),
-                                     alertTextColor: Color.black,
+            let theme = AlertX.Theme(windowColor: Color(red: 111/255, green: 255/255, blue: 233/255),
+                                     alertTextColor: Color(red: 11/255, green: 19/255, blue: 43/255),
                                      enableShadow: true,
                                      enableRoundedCorners: roundedCorners,
                                      enableTransparency: transparency,
-                                     cancelButtonColor: Color(red: 115/255, green: 253/255, blue: 234/255),
-                                     cancelButtonTextColor: Color.black,
-                                     defaultButtonColor: Color(red: 0/255, green: 171/255, blue: 142/255),
+                                     cancelButtonColor: Color(red: 91/255, green: 192/255, blue: 190/255),
+                                     cancelButtonTextColor: Color.white,
+                                     defaultButtonColor: Color(red: 11/255, green: 19/255, blue: 43/255),
                                      defaultButtonTextColor: Color.white)
             
             return theme
         }
 
         public static func wine(withTransparency transparency: Bool = true, roundedCorners: Bool = false) -> AlertX.Theme {
-            let theme = AlertX.Theme(windowColor: Color(red: 114/255, green: 47/255, blue: 55/255),
+            let theme = AlertX.Theme(windowColor: Color(red: 100/255, green: 18/255, blue: 32/255),
                                      alertTextColor: Color.white,
                                      enableShadow: true,
                                      enableRoundedCorners: roundedCorners,
                                      enableTransparency: transparency,
-                                     cancelButtonColor: Color(red: 255/255, green: 100/255, blue: 78/255),
+                                     cancelButtonColor: Color(red: 178/255, green: 30/255, blue: 53/255),
                                      cancelButtonTextColor: Color.white,
-                                     defaultButtonColor: Color(red: 181/255, green: 23/255, blue: 0/255),
+                                     defaultButtonColor: Color(red: 224/255, green: 30/255, blue: 55/255),
                                      defaultButtonTextColor: Color.white)
 
             return theme

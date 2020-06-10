@@ -27,8 +27,7 @@ extension AlertX {
         }
         
         public static func defaultEffect() -> AlertX.AnimationX {
-            let spring = Animation.spring(response: 0.25, dampingFraction: 0.6, blendDuration: 0.25)
-            let transition = AnyTransition.scale(scale: 1.2).combined(with: .opacity).animation(spring)
+            let transition = AnyTransition.scale(scale: 1.2).combined(with: .opacity).animation(.easeOut(duration: 0.15))
             return AlertX.AnimationX(transition: transition)
         }
         
@@ -45,6 +44,11 @@ extension AlertX {
         
         public static func fadeEffect() -> AlertX.AnimationX {
             let transition = AnyTransition.opacity
+            return AlertX.AnimationX(transition: transition)
+        }
+        
+        public static func slideUpEffect() -> AlertX.AnimationX {
+            let transition = AnyTransition.move(edge: .bottom).combined(with: .opacity).animation(.easeOut)
             return AlertX.AnimationX(transition: transition)
         }
         
