@@ -24,8 +24,7 @@ public struct AlertX: View {
     var alertX_title: Text
     var alertX_message: Text?
     
-    var primaryButton: AlertX.Button?
-    var secondaryButton: AlertX.Button?
+    var buttonStack: [AlertX.Button]?
         
     // Theme and Animation
     var theme: AlertX.Theme = AlertX.Theme()
@@ -34,8 +33,24 @@ public struct AlertX: View {
     public init(title: Text, message: Text? = nil, primaryButton: AlertX.Button? = .default(Text("OK")), secondaryButton: AlertX.Button? = nil, theme: AlertX.Theme = AlertX.Theme(), animation: AlertX.AnimationX = .defaultEffect()) {
         self.alertX_title = title
         self.alertX_message = message
-        self.primaryButton = primaryButton
-        self.secondaryButton = secondaryButton
+        
+        self.buttonStack = [primaryButton!]
+        if let secondaryButton = secondaryButton {
+            self.buttonStack?.append(secondaryButton)
+        }
+        
+        self.theme = theme
+        self.alertX_cornerRadius = theme.enableRoundedCorners ? AlertX.defaultCornerRadius : 0.0
+        self.alertX_shadowRadius = theme.enableShadow ? AlertX.defaultShadowRadius : 0.0
+        
+        self.animation = animation
+    }
+    
+    public init(title: Text, message: Text? = nil, buttonStack: [AlertX.Button] = [AlertX.Button.default(Text("OK"))], theme: AlertX.Theme = AlertX.Theme(), animation: AlertX.AnimationX = .defaultEffect()) {
+        self.alertX_title = title
+        self.alertX_message = message
+        
+        self.buttonStack = buttonStack
         
         self.theme = theme
         self.alertX_cornerRadius = theme.enableRoundedCorners ? AlertX.defaultCornerRadius : 0.0
@@ -59,43 +74,42 @@ public struct AlertX: View {
                     .padding(.init(top: 0, leading: 25, bottom: 35, trailing: 25))
                     .foregroundColor(theme.alertTextColor)
                 
-                HStack {
                     
-                    Spacer()
-                    
-                    if primaryButton?.buttonType == AlertX.ButtonType.default {
-                        primaryButton
-                            .background(theme.defaultButtonColor)
-                            .foregroundColor(theme.defaultButtonTextColor)
-                            .cornerRadius(theme.enableRoundedCorners ? AlertX.defaultCornerRadius : 0.0)
-                    } else {
-                        primaryButton
-                            .background(theme.cancelButtonColor)
-                            .foregroundColor(theme.cancelButtonTextColor)
-                            .cornerRadius(theme.enableRoundedCorners ? AlertX.defaultCornerRadius : 0.0)
+                    if buttonStack != nil {
+                        
+                        if buttonStack!.count < 3 {
+                            
+                            HStack {
+                                ForEach((0...(buttonStack?.count ?? 0)-1), id: \.self) {
+                                    
+                                    self.buttonStack?[$0]
+                                        .background(self.buttonStack![$0].buttonType == AlertX.ButtonType.default ? self.theme.defaultButtonColor : self.theme.cancelButtonColor)
+                                    .foregroundColor(self.buttonStack![$0].buttonType == AlertX.ButtonType.default ? self.theme.defaultButtonTextColor : self.theme.cancelButtonTextColor)
+                                    .cornerRadius(self.theme.enableRoundedCorners ? AlertX.defaultCornerRadius : 0.0)
+                                
+                                }
+                            }.padding()
+                            
+                        } else {
+                            
+                            VStack {
+                                
+                                ForEach((0...(buttonStack!.count)-1), id: \.self) {
+                                    
+                                        self.buttonStack?[$0]
+                                            .background(self.buttonStack![$0].buttonType == AlertX.ButtonType.default ? self.theme.defaultButtonColor : self.theme.cancelButtonColor)
+                                        .foregroundColor(self.buttonStack![$0].buttonType == AlertX.ButtonType.default ? self.theme.defaultButtonTextColor : self.theme.cancelButtonTextColor)
+                                        .cornerRadius(self.theme.enableRoundedCorners ? AlertX.defaultCornerRadius : 0.0)
+                                            .padding(.bottom, 10)
+                                    
+                                }
+                                
+                            }.padding()
+                            
+                        }
+                        
                     }
                     
-                    Spacer()
-                    
-                    if secondaryButton?.buttonType == AlertX.ButtonType.default {
-                        secondaryButton
-                            .background(theme.defaultButtonColor)
-                            .foregroundColor(theme.defaultButtonTextColor)
-                            .cornerRadius(theme.enableRoundedCorners ? AlertX.defaultCornerRadius : 0.0)
-                    } else {
-                        secondaryButton
-                            .background(theme.cancelButtonColor)
-                            .foregroundColor(theme.cancelButtonTextColor)
-                            .cornerRadius(theme.enableRoundedCorners ? AlertX.defaultCornerRadius : 0.0)
-                    }
-                    
-                    if secondaryButton != nil {
-                        Spacer()
-                    }
-                    
-                }.padding()
-                
-                
             }.background(AlertX.Window(color: theme.windowColor, cornerRadiusEnabled: theme.enableRoundedCorners, transparencyEnabled: theme.enableTransparency))
                 .frame(minWidth: 0, maxWidth: .infinity, alignment: .center)
                 .padding()
