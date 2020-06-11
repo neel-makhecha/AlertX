@@ -120,12 +120,22 @@ You can also create your own animations just like you would for any other SwiftU
 
     AlertX.AnimationX.custom(withTransition: AnyTransition)
 
+## Adding More Buttons
+
+Use the initialiser which takes an array of AlertX.Button (buttonStack) to add as many buttons as you want in the alert. Here's an example (body of the closure to be passed in the alertX method):
+
+
+            let buttons = [
+                AlertX.Button.default(Text("Yes")),
+                AlertX.Button.default(Text("No")),
+                AlertX.Button.cancel()]
+            
+            return AlertX(title: Text("Are you sure about this?"), buttonStack: buttons)
 
 ## Future Work
 
-1. Support for more than two buttons.
-2. Support for text fields.
-3. Even more and better pre-defined themes and animations.
+1. Support for text fields.
+2. Even more and better pre-defined themes and animations.
 
 ## Contributing
 
