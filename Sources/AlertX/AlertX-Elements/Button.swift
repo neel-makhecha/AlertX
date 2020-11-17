@@ -20,11 +20,6 @@ extension AlertX {
         let text: Text
         var buttonType: AlertX.ButtonType = .default
         
-        let dismissAction: () -> Void = {
-            AlertX_View.currentAlertXVCReference?.dismiss(animated: true, completion: nil)
-            AlertX_View.currentAlertXVCReference = nil
-        }
-        
         var buttonAction: (() -> Void)?
         
         private init(text: Text, buttonType: AlertX.ButtonType, action: (() -> Void)? = {}) {
@@ -34,13 +29,16 @@ extension AlertX {
         }
         
         public var body: some View {
-            
             SystemButton(action: {
                 
-                if let action = self.buttonAction {
-                    action()
-                }
-                self.dismissAction()
+                //First dismiss AlertXViewController and then perform action
+                AlertX_View.currentAlertXVCReference?.dismiss(animated: true, completion: {
+                    AlertX_View.currentAlertXVCReference = nil
+                    
+                    if let action = self.buttonAction {
+                        action()
+                    }
+                })
                 
             }, label: {
                 text
@@ -67,5 +65,3 @@ extension AlertX {
     }
     
 }
-
-
