@@ -24,7 +24,6 @@ extension View {
             }
             
             let viewController = self.topViewController()
-            print("Number of windows: \(UIApplication.shared.windows.count)")
             viewController?.present(alertXVC, animated: true, completion: nil)
         } else {
             alertXVC.dismiss(animated: true, completion: nil)
