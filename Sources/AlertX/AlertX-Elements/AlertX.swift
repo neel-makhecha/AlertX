@@ -40,7 +40,7 @@ public struct AlertX: View {
         }
         
         self.theme = theme
-		self.alertX_cornerRadius = theme.enableRoundedCorners ? theme.roundedCornerRadius : 0.0
+        self.alertX_cornerRadius = theme.enableRoundedCorners ? theme.roundedCornerRadius : 0.0
         self.alertX_shadowRadius = theme.enableShadow ? AlertX.defaultShadowRadius : 0.0
         
         self.animation = animation
