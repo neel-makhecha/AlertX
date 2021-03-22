@@ -14,12 +14,14 @@ extension AlertX {
         
         //Default theme
         public static var defaultTheme: AlertX.Theme = graphite()
+		public static let defaultCornerRadius = AlertX.defaultCornerRadius
         
         // General Properties
         var windowColor: Color
         var alertTextColor: Color
         var enableShadow: Bool
         var enableRoundedCorners: Bool
+		var roundedCornerRadius: CGFloat
         var enableTransparency: Bool
         
         // Button Properties
@@ -34,12 +36,13 @@ extension AlertX {
         }
         
         // Private init
-        private init(windowColor: Color, alertTextColor: Color, enableShadow: Bool, enableRoundedCorners: Bool, enableTransparency: Bool, cancelButtonColor: Color, cancelButtonTextColor: Color, defaultButtonColor: Color, defaultButtonTextColor: Color) {
+		private init(windowColor: Color, alertTextColor: Color, enableShadow: Bool, enableRoundedCorners: Bool, enableTransparency: Bool, cancelButtonColor: Color, cancelButtonTextColor: Color, defaultButtonColor: Color, defaultButtonTextColor: Color, roundedCornerRadius: CGFloat = defaultCornerRadius) {
             
             self.windowColor = windowColor
             self.alertTextColor = alertTextColor
             self.enableShadow = enableShadow
             self.enableRoundedCorners = enableRoundedCorners
+			self.roundedCornerRadius = roundedCornerRadius
             self.enableTransparency = enableTransparency
             
             self.cancelButtonColor = cancelButtonColor
@@ -49,7 +52,7 @@ extension AlertX {
         }
         
         // Define custom theme
-        public static func custom(windowColor: Color, alertTextColor: Color, enableShadow: Bool, enableRoundedCorners: Bool, enableTransparency: Bool, cancelButtonColor: Color, cancelButtonTextColor: Color, defaultButtonColor: Color, defaultButtonTextColor: Color) -> AlertX.Theme {
+        public static func custom(windowColor: Color, alertTextColor: Color, enableShadow: Bool, enableRoundedCorners: Bool, enableTransparency: Bool, cancelButtonColor: Color, cancelButtonTextColor: Color, defaultButtonColor: Color, defaultButtonTextColor: Color, roundedCornerRadius: CGFloat = defaultCornerRadius) -> AlertX.Theme {
             
             let theme = AlertX.Theme(windowColor: windowColor,
                                      alertTextColor: alertTextColor,
@@ -59,7 +62,8 @@ extension AlertX {
                                      cancelButtonColor: cancelButtonColor,
                                      cancelButtonTextColor: cancelButtonTextColor,
                                      defaultButtonColor: defaultButtonColor,
-                                     defaultButtonTextColor: defaultButtonTextColor)
+                                     defaultButtonTextColor: defaultButtonTextColor,
+									 roundedCornerRadius: roundedCornerRadius)
             
             return theme
         }

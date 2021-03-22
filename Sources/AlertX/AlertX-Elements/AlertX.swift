@@ -40,7 +40,7 @@ public struct AlertX: View {
         }
         
         self.theme = theme
-        self.alertX_cornerRadius = theme.enableRoundedCorners ? AlertX.defaultCornerRadius : 0.0
+		self.alertX_cornerRadius = theme.enableRoundedCorners ? theme.roundedCornerRadius : 0.0
         self.alertX_shadowRadius = theme.enableShadow ? AlertX.defaultShadowRadius : 0.0
         
         self.animation = animation
@@ -53,7 +53,7 @@ public struct AlertX: View {
         self.buttonStack = buttonStack
         
         self.theme = theme
-        self.alertX_cornerRadius = theme.enableRoundedCorners ? AlertX.defaultCornerRadius : 0.0
+        self.alertX_cornerRadius = theme.enableRoundedCorners ? theme.roundedCornerRadius : 0.0
         self.alertX_shadowRadius = theme.enableShadow ? AlertX.defaultShadowRadius : 0.0
         
         self.animation = animation
@@ -85,7 +85,7 @@ public struct AlertX: View {
                                     self.buttonStack?[$0]
                                         .background(self.buttonStack![$0].buttonType == AlertX.ButtonType.default ? self.theme.defaultButtonColor : self.theme.cancelButtonColor)
                                     .foregroundColor(self.buttonStack![$0].buttonType == AlertX.ButtonType.default ? self.theme.defaultButtonTextColor : self.theme.cancelButtonTextColor)
-                                    .cornerRadius(self.theme.enableRoundedCorners ? AlertX.defaultCornerRadius : 0.0)
+                                    .cornerRadius(self.theme.enableRoundedCorners ? theme.roundedCornerRadius : 0.0)
                                 
                                 }
                             }.padding()
@@ -99,7 +99,7 @@ public struct AlertX: View {
                                         self.buttonStack?[$0]
                                             .background(self.buttonStack![$0].buttonType == AlertX.ButtonType.default ? self.theme.defaultButtonColor : self.theme.cancelButtonColor)
                                         .foregroundColor(self.buttonStack![$0].buttonType == AlertX.ButtonType.default ? self.theme.defaultButtonTextColor : self.theme.cancelButtonTextColor)
-                                        .cornerRadius(self.theme.enableRoundedCorners ? AlertX.defaultCornerRadius : 0.0)
+                                        .cornerRadius(self.theme.enableRoundedCorners ? theme.roundedCornerRadius : 0.0)
                                             .padding(.bottom, 10)
                                     
                                 }
@@ -110,7 +110,7 @@ public struct AlertX: View {
                         
                     }
                     
-            }.background(AlertX.Window(color: theme.windowColor, cornerRadiusEnabled: theme.enableRoundedCorners, transparencyEnabled: theme.enableTransparency))
+            }.background(AlertX.Window(color: theme.windowColor, cornerRadius: self.theme.enableRoundedCorners ? theme.roundedCornerRadius : 0.0, transparencyEnabled: theme.enableTransparency))
                 .frame(minWidth: 0, maxWidth: .infinity, alignment: .center)
                 .padding()
                 .shadow(radius: alertX_shadowRadius)

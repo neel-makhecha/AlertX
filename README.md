@@ -95,7 +95,8 @@ To create a custom theme, use the following method which offers a variety of opt
                        cancelButtonColor: Color,
                        cancelButtonTextColor: Color,
                        defaultButtonColor: Color,
-                       defaultButtonTextColor: Color)
+                       defaultButtonTextColor: Color,
+                       roundedCornerRadius: CGFloat)
 
 
 ## Animations
