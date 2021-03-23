@@ -16,10 +16,10 @@ extension AlertX {
         var windowColorOpacity: Double
         var cornerRadius: CGFloat
         
-        public init(color: Color, cornerRadiusEnabled: Bool, transparencyEnabled: Bool) {
+        public init(color: Color, cornerRadius: CGFloat, transparencyEnabled: Bool) {
             self.windowColor = color
             self.windowColorOpacity = transparencyEnabled ? AlertX.defaultAlertOpacity : 1.0
-            self.cornerRadius = cornerRadiusEnabled ? AlertX.defaultCornerRadius : 0
+            self.cornerRadius = cornerRadius
         }
         
         var body: some View {
