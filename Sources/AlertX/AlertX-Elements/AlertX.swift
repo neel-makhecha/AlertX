@@ -104,14 +104,16 @@ public struct AlertX: View {
                     .foregroundColor(theme.alertTextColor)
                 
                 if (alertX_textfield_enabled ?? false) {
-                    alertX_textfield
-                        .padding()
-                        .background(
-                            RoundedRectangle(cornerRadius: 25)
-                                .fill(Color(UIColor.secondarySystemBackground))
-                                .frame(minHeight: 50)
-                        )
-                        .padding()
+                    VStack {
+                        alertX_textfield
+                    }
+                    .padding()
+                    .background(
+                        RoundedRectangle(cornerRadius: theme.roundedCornerRadius)
+                            .fill(Color(UIColor.secondarySystemBackground))
+                            .frame(minHeight: 50)
+                    )
+                    .padding()
                 }
                     
                     if buttonStack != nil {

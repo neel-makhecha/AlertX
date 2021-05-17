@@ -135,8 +135,7 @@ Use the initialiser which takes an array of AlertX.Button (buttonStack) to add a
 
 ## Future Work
 
-1. Support for text fields.
-2. Even more and better pre-defined themes and animations.
+1. Even more and better pre-defined themes and animations.
 
 ## Contributing
 
