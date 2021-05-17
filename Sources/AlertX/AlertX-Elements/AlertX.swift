@@ -23,6 +23,8 @@ public struct AlertX: View {
     // AlertX Fields
     var alertX_title: Text
     var alertX_message: Text?
+    var alertX_textfield: TextField<Text>?
+    var alertX_textfield_enabled: Bool?
     
     var buttonStack: [AlertX.Button]?
         
@@ -33,6 +35,8 @@ public struct AlertX: View {
     public init(title: Text, message: Text? = nil, primaryButton: AlertX.Button? = .default(Text("OK")), secondaryButton: AlertX.Button? = nil, theme: AlertX.Theme = AlertX.Theme(), animation: AlertX.AnimationX = .defaultEffect()) {
         self.alertX_title = title
         self.alertX_message = message
+        
+        self.alertX_textfield_enabled = false
         
         self.buttonStack = [primaryButton!]
         if let secondaryButton = secondaryButton {
@@ -50,7 +54,32 @@ public struct AlertX: View {
         self.alertX_title = title
         self.alertX_message = message
         
+        self.alertX_textfield_enabled = false
+        
         self.buttonStack = buttonStack
+        
+        self.theme = theme
+        self.alertX_cornerRadius = theme.enableRoundedCorners ? theme.roundedCornerRadius : 0.0
+        self.alertX_shadowRadius = theme.enableShadow ? AlertX.defaultShadowRadius : 0.0
+        
+        self.animation = animation
+    }
+    
+    public init(title: Text, message: Text? = nil, textfield: TextField<Text>? = nil, primaryButton: AlertX.Button? = .default(Text("OK")), secondaryButton: AlertX.Button? = nil, theme: AlertX.Theme = AlertX.Theme(), animation: AlertX.AnimationX = .defaultEffect()) {
+        self.alertX_title = title
+        self.alertX_message = message
+        self.alertX_textfield = textfield
+        
+        if (textfield != nil) {
+            self.alertX_textfield_enabled = true
+        } else {
+            self.alertX_textfield_enabled = false
+        }
+        
+        self.buttonStack = [primaryButton!]
+        if let secondaryButton = secondaryButton {
+            self.buttonStack?.append(secondaryButton)
+        }
         
         self.theme = theme
         self.alertX_cornerRadius = theme.enableRoundedCorners ? theme.roundedCornerRadius : 0.0
@@ -74,6 +103,16 @@ public struct AlertX: View {
                     .padding(.init(top: 0, leading: 25, bottom: 35, trailing: 25))
                     .foregroundColor(theme.alertTextColor)
                 
+                if (alertX_textfield_enabled ?? false) {
+                    alertX_textfield
+                        .padding()
+                        .background(
+                            RoundedRectangle(cornerRadius: 25)
+                                .fill(Color(UIColor.secondarySystemBackground))
+                                .frame(minHeight: 50)
+                        )
+                        .padding()
+                }
                     
                     if buttonStack != nil {
                         
