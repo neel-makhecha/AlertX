@@ -31,21 +31,20 @@ extension AlertX {
         public var body: some View {
             SystemButton(action: {
                 
-                if let reference = AlertX_View.currentAlertXVCReference {
-                    // For alerts presented by View.alertX modifier, first dismiss AlertXViewController and then perform action
-                    AlertX_View.currentAlertXVCReference?.dismiss(animated: true, completion: {
-                        AlertX_View.currentAlertXVCReference = nil
-                        
-                        if let action = self.buttonAction {
-                            action()
-                        }
-                    })
+                func prepareForDismiss(completion: @escaping () -> Void) {
                     
-                } else {
-                    // For alerts presented by custom modifiers like View.fullScreenCover directly with AlertX view, just perform action
-                    if let action = self.buttonAction {
-                        action()
+                    if let reference = AlertX_View.currentAlertXVCReference {
+                        AlertX_View.currentAlertXVCReference = nil
+                        reference.dismiss(animated: true, completion: completion)
+                        
+                    } else {
+                        completion()
                     }
+                    
+                }
+                
+                prepareForDismiss {
+                    buttonAction?()
                 }
                 
             }, label: {
