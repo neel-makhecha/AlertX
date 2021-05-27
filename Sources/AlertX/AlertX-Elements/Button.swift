@@ -31,14 +31,21 @@ extension AlertX {
         public var body: some View {
             SystemButton(action: {
                 
-                //First dismiss AlertXViewController and then perform action
-                AlertX_View.currentAlertXVCReference?.dismiss(animated: true, completion: {
-                    AlertX_View.currentAlertXVCReference = nil
+                func prepareForDismiss(completion: @escaping () -> Void) {
                     
-                    if let action = self.buttonAction {
-                        action()
+                    if let reference = AlertX_View.currentAlertXVCReference {
+                        AlertX_View.currentAlertXVCReference = nil
+                        reference.dismiss(animated: true, completion: completion)
+                        
+                    } else {
+                        completion()
                     }
-                })
+                    
+                }
+                
+                prepareForDismiss {
+                    buttonAction?()
+                }
                 
             }, label: {
                 text
